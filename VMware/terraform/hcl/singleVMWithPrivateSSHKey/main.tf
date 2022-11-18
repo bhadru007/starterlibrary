@@ -98,18 +98,21 @@ resource "vsphere_virtual_machine" "vm" {
     size           = var.vm_disk_size
     keep_on_remove = var.vm_disk_keep_on_remove
     datastore_id   = data.vsphere_datastore.datastore.id
+    unit_number    = 0
   }
   disk {
     label          = "${var.vm_name}1.vmdk"
     size           = var.vm_disk_size
     keep_on_remove = var.vm_disk_keep_on_remove
     datastore_id   = data.vsphere_datastore.datastore.id
+    unit_number    = 1
   }
   disk {
     label          = "${var.vm_name}2.vmdk"
     size           = var.vm_disk_size
     keep_on_remove = var.vm_disk_keep_on_remove
     datastore_id   = data.vsphere_datastore.datastore.id
+    unit_number    = 2
   }
 
   lifecycle {
