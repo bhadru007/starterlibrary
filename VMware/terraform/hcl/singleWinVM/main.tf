@@ -166,6 +166,7 @@ resource "vsphere_virtual_machine" "Win-vm" {
   memory           = var.vm_memory
   resource_pool_id = data.vsphere_resource_pool.vsphere_resource_pool.id
   datastore_id     = data.vsphere_datastore.vsphere_datastore.id
+  firmware         = "efi"
   guest_id         = data.vsphere_virtual_machine.vm_template.guest_id
   scsi_type        = data.vsphere_virtual_machine.vm_template.scsi_type
 
