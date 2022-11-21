@@ -214,5 +214,13 @@ resource "vsphere_virtual_machine" "vm_1" {
     datastore_id   = data.vsphere_datastore.datastore.id
     unit_number    = 2
   }
+  
+  lifecycle {
+    ignore_changes = [
+      datastore_id,
+      disk.0.datastore_id,
+    ]
+    create_before_destroy = true
+  }
 }
 
