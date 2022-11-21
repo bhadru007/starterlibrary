@@ -67,6 +67,7 @@ resource "vsphere_virtual_machine" "vm" {
   datastore_id     = data.vsphere_datastore.datastore.id
   guest_id         = data.vsphere_virtual_machine.vm_image_template.guest_id
   scsi_type        = data.vsphere_virtual_machine.vm_image_template.scsi_type
+  firmware         = "efi"
   tags = vsphere_tag.ibm_terraform_automation_tags[*].id
   clone {
     template_uuid = data.vsphere_virtual_machine.vm_image_template.id
