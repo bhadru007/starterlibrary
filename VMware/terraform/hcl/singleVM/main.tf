@@ -194,7 +194,7 @@ resource "vsphere_virtual_machine" "vm_1" {
   }
 
   disk {
-    label          = "${var.vm_name}.vmdk"
+    label          = "${var.vm_1_name}.vmdk"
     size           = var.vm_disk_size
     keep_on_remove = var.vm_disk_keep_on_remove
     datastore_id   = data.vsphere_datastore.vm_1_datastore.id
