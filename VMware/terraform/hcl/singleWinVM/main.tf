@@ -169,6 +169,7 @@ resource "vsphere_virtual_machine" "Win-vm" {
   firmware         = "efi"
   guest_id         = data.vsphere_virtual_machine.vm_template.guest_id
   scsi_type        = data.vsphere_virtual_machine.vm_template.scsi_type
+  wait_for_guest_net_timeout = 0
 
   clone {
     template_uuid = data.vsphere_virtual_machine.vm_template.id
