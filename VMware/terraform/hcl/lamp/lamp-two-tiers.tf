@@ -235,6 +235,7 @@ resource "vsphere_virtual_machine" "mariadb_vm" {
   guest_id         = data.vsphere_virtual_machine.mariadb_vm_template.guest_id
   scsi_type        = data.vsphere_virtual_machine.mariadb_vm_template.scsi_type
   firmware         = "efi"
+  wait_for_guest_net_timeout = 0
 
   clone {
     template_uuid = data.vsphere_virtual_machine.mariadb_vm_template.id
@@ -406,6 +407,7 @@ resource "vsphere_virtual_machine" "php_vm" {
   guest_id         = data.vsphere_virtual_machine.php_vm_template.guest_id
   scsi_type        = data.vsphere_virtual_machine.php_vm_template.scsi_type
   firmware         = "efi"
+  wait_for_guest_net_timeout = 0
 
   clone {
     template_uuid = data.vsphere_virtual_machine.php_vm_template.id
