@@ -420,6 +420,21 @@ resource "vsphere_virtual_machine" "php_vm" {
     size           = var.php_vm_root_disk_size
     keep_on_remove = var.php_vm_root_disk_keep_on_remove
     datastore_id   = data.vsphere_datastore.php_vm_datastore.id
+    unit_number    = 0
+  }
+  disk {
+    name           = "${var.php_vm_name}.vmdk"
+    size           = var.php_vm_root_disk_size
+    keep_on_remove = var.php_vm_root_disk_keep_on_remove
+    datastore_id   = data.vsphere_datastore.php_vm_datastore.id
+    unit_number    = 1
+  }
+  disk {
+    name           = "${var.php_vm_name}.vmdk"
+    size           = var.php_vm_root_disk_size
+    keep_on_remove = var.php_vm_root_disk_keep_on_remove
+    datastore_id   = data.vsphere_datastore.php_vm_datastore.id
+    unit_number    = 2
   }
 }
 
