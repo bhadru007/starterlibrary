@@ -265,6 +265,21 @@ resource "vsphere_virtual_machine" "mariadb_vm" {
     size           = var.mariadb_vm_root_disk_size
     keep_on_remove = var.mariadb_vm_root_disk_keep_on_remove
     datastore_id   = data.vsphere_datastore.mariadb_vm_datastore.id
+    unit_number    = 0
+  }
+   disk {
+    label          = "${var.mariadb_vm_name}0.vmdk"
+    size           = var.mariadb_vm_root_disk_size
+    keep_on_remove = var.mariadb_vm_root_disk_keep_on_remove
+    datastore_id   = data.vsphere_datastore.mariadb_vm_datastore.id
+    unit_number    = 1
+  }
+   disk {
+    label          = "${var.mariadb_vm_name}0.vmdk"
+    size           = var.mariadb_vm_root_disk_size
+    keep_on_remove = var.mariadb_vm_root_disk_keep_on_remove
+    datastore_id   = data.vsphere_datastore.mariadb_vm_datastore.id
+    unit_number    = 2
   }
 }
 
