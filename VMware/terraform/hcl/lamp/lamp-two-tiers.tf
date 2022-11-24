@@ -234,6 +234,7 @@ resource "vsphere_virtual_machine" "mariadb_vm" {
   datastore_id     = data.vsphere_datastore.mariadb_vm_datastore.id
   guest_id         = data.vsphere_virtual_machine.mariadb_vm_template.guest_id
   scsi_type        = data.vsphere_virtual_machine.mariadb_vm_template.scsi_type
+  firmware         = "efi"
 
   clone {
     template_uuid = data.vsphere_virtual_machine.mariadb_vm_template.id
@@ -404,6 +405,7 @@ resource "vsphere_virtual_machine" "php_vm" {
   datastore_id     = data.vsphere_datastore.php_vm_datastore.id
   guest_id         = data.vsphere_virtual_machine.php_vm_template.guest_id
   scsi_type        = data.vsphere_virtual_machine.php_vm_template.scsi_type
+  firmware         = "efi"
 
   clone {
     template_uuid = data.vsphere_virtual_machine.php_vm_template.id
