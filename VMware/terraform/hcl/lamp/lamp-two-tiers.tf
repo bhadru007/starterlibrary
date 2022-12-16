@@ -542,6 +542,7 @@ resource "null_resource" "install_php" {
     bastion_port        = var.bastion_port
     bastion_host_key    = var.bastion_host_key
     bastion_password    = var.bastion_password
+    script_path         = "$HOME/inlinecmd.sh"
   }
 
   # Create the installation script
@@ -627,14 +628,14 @@ echo "---finish installing php---" | tee -a $LOGFILE 2>&1
 EOF
 
 
-    destination = "/tmp/installation.sh"
+    destination = "$HOME/installation.sh"
   }
 
   # Execute the script remotely
   # Execute the script remotely
   provisioner "remote-exec" {
     inline = [
-      "chmod +x /tmp/installation.sh; bash /tmp/installation.sh \"${vsphere_virtual_machine.php_vm.clone[0].customize[0].network_interface[0].ipv4_address}\" \"${vsphere_virtual_machine.mariadb_vm.clone[0].customize[0].network_interface[0].ipv4_address}\" \"${var.mariadb_user}\" \"${var.mariadb_pwd}\"",
+      "chmod +x $HOME/installation.sh; bash $HOME/installation.sh \"${vsphere_virtual_machine.php_vm.clone[0].customize[0].network_interface[0].ipv4_address}\" \"${vsphere_virtual_machine.mariadb_vm.clone[0].customize[0].network_interface[0].ipv4_address}\" \"${var.mariadb_user}\" \"${var.mariadb_pwd}\"",
     ]
   }
 }
